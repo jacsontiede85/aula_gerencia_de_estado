@@ -94,7 +94,7 @@ class _NovaAnotacaoPageState extends State<NovaAnotacaoPage> {
                 widget.controller.carregando = false;
 
                 print('anotação criada');
-                //Navigator.pop(context);
+                Navigator.pop(context);
               },
               child: const Text('Salvar'),
             ),
