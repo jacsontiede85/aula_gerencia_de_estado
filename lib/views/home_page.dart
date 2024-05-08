@@ -53,11 +53,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    print('home');
+    
     return Scaffold(
-
-
-
       appBar: AppBar(
         centerTitle: true,
 
@@ -67,7 +65,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context) {
             return Text(
               'Anotações - Test: ${controllerTeste.test}',
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             );
           }
         ),

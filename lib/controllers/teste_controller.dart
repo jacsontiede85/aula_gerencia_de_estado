@@ -8,8 +8,10 @@ class TesteController extends TiedeNotify {
     test = 'Alterado ...';
     notify();
 
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed( const Duration(seconds: 5));
+    
     test = 'Alteração concluida!';
     notify();
   }
+
 }
