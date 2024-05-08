@@ -1,10 +1,12 @@
 //import 'package:app_anotacoes/controllers/controllers.dart';
 import 'package:app_anotacoes/controllers/listar_notas_controller.dart';
+import 'package:app_anotacoes/controllers/teste_controller.dart';
 import 'package:app_anotacoes/models/anotacao.dart';
 import 'package:app_anotacoes/repositorio/anotacao_repositorio.dart';
 import 'package:app_anotacoes/views/anotacao_detalhes_page.dart';
 import 'package:app_anotacoes/views/nova_anotacao_page.dart';
 import 'package:flutter/material.dart';
+import 'package:tiede_builder_pkg/tiede_builder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,21 +36,50 @@ class _HomePageState extends State<HomePage> {
   final ListarNotasController controllerLista = ListarNotasController();
 
   @override
+  void initState() {
+    print('initState - aplicativo iniciado');
+    controllerTeste.alterar();
+    super.initState();
+  }
+  
+
+  @override
+  void dispose() {
+    print('dispose - aplicativo finalizado');
+    super.dispose();
+  }
+
+  TesteController controllerTeste = TesteController();
+
+  @override
   Widget build(BuildContext context) {
 
     return Scaffold(
+
+
+
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'Anotações',
-          style: TextStyle(color: Colors.white),
+
+        
+        title: TiedeBuilder(
+          notify: controllerTeste,
+          builder: (context) {
+            return Text(
+              'Anotações - Test: ${controllerTeste.test}',
+              style: TextStyle(color: Colors.white),
+            );
+          }
         ),
+
         backgroundColor: const Color.fromARGB(255, 169, 149, 204),
       ),
       body: ListView.builder(
         itemCount: controllerLista.listarNotas.length,
         itemBuilder: (BuildContext context, index) {
+          
           Map<String, dynamic> notas = controllerLista.listarNotas[index];
+
           return Card(
             child: ListTile(
               leading: const Icon(Icons.assignment),

@@ -6,6 +6,7 @@ class ListarNotasController = ListarNotasControllerBase with _$ListarNotasContro
 
 abstract class ListarNotasControllerBase with Store {
 
+  @observable
   List<Map<String, dynamic>> listarNotas = [
     {
       'titulo': 'Arrumar o quarto',
@@ -13,6 +14,8 @@ abstract class ListarNotasControllerBase with Store {
       'status': 'Pendente'
     }
   ];
+
+
   String campoTitulo = '';
   String campoDescricao = '';
   String campoStatus = '';
@@ -32,5 +35,7 @@ abstract class ListarNotasControllerBase with Store {
     campoDescricao = '';
     campoStatus = '';
     carregando = false;
+    listarNotas = listarNotas;
   }
+
 }

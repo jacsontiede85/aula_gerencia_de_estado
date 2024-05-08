@@ -1,6 +1,7 @@
 import 'package:app_anotacoes/models/anotacao.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AnotacaoDetalhesPage extends StatefulWidget {
   Anotacao2 anotacao;
 

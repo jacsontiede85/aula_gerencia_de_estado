@@ -2,16 +2,14 @@ import 'package:app_anotacoes/controllers/listar_notas_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class NovaAnotacaoPage extends StatefulWidget {
-  final ListarNotasController controller;
-  const NovaAnotacaoPage({super.key, required this.controller});
 
-  @override
-  State<NovaAnotacaoPage> createState() => _NovaAnotacaoPageState();
-}
+// ignore: must_be_immutable
+class NovaAnotacaoPage extends StatelessWidget {
 
-class _NovaAnotacaoPageState extends State<NovaAnotacaoPage> {
-  String concluidoComSucesso = " ... ";
+  ListarNotasController controller;
+  NovaAnotacaoPage({super.key, required this.controller});
+
+  String concluidoComSucesso = '...';
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +40,7 @@ class _NovaAnotacaoPageState extends State<NovaAnotacaoPage> {
               prefixIcon: Icon(Icons.label_important_outline),
             ),
             onChanged: (value) {
-              widget.controller.campoTitulo = value;
+              controller.campoTitulo = value;
             },
           ),
           const SizedBox(
@@ -55,7 +53,7 @@ class _NovaAnotacaoPageState extends State<NovaAnotacaoPage> {
               prefixIcon: Icon(Icons.label_important_outline),
             ),
             onChanged: (value) {
-              widget.controller.campoDescricao = value;
+              controller.campoDescricao = value;
             },
           ),
           const SizedBox(
@@ -68,16 +66,16 @@ class _NovaAnotacaoPageState extends State<NovaAnotacaoPage> {
               prefixIcon: Icon(Icons.label_important_outline),
             ),
             onChanged: (value) {
-              widget.controller.campoStatus = value;
+              controller.campoStatus = value;
             },
           ),
       
           Observer(
             builder: (_) =>
               Visibility(
-                visible: widget.controller.carregando, 
-                  child: Text(concluidoComSucesso),
-                ),
+                visible: controller.carregando, 
+                child: Text(concluidoComSucesso),
+              ),
           ),
       
           Padding(
@@ -85,13 +83,13 @@ class _NovaAnotacaoPageState extends State<NovaAnotacaoPage> {
             child: ElevatedButton(
               onPressed: () async {
                 concluidoComSucesso = "Anotação criada com sucesso!";
-                widget.controller.carregando = true;
+                controller.carregando = true;
                 await Future.delayed(const Duration(seconds: 2));
 
                 
-                widget.controller.adicionarNovasNotas();
-                await Future.delayed(const Duration(seconds: 4));
-                widget.controller.carregando = false;
+                controller.adicionarNovasNotas();
+                await Future.delayed(const Duration(seconds: 2));
+                controller.carregando = false;
 
                 print('anotação criada');
                 Navigator.pop(context);

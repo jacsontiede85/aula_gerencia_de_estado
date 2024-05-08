@@ -259,6 +259,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      sha256: "761a297c042deedc1ffbb156d6e2af13886bb305c2a343a4d972504cd67dd938"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
   http_multi_server:
     dependency: transitive
     description:
@@ -528,6 +536,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.1"
+  tiede_builder_pkg:
+    dependency: "direct main"
+    description:
+      name: tiede_builder_pkg
+      sha256: aca1a724da79a46628ef2c1c24a9eb55a4da98423639522e506875c167dcee2f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   timing:
     dependency: transitive
     description:
